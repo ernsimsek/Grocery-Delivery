@@ -20,6 +20,12 @@ const Navbar = () => {
             <Link to='/' className="flex items-center gap-2 text-[22px] font-medium shrink-0">
             <BikeIcon size={24} /> Instacart
             </Link>
+            <div className="w-full flex items-center justify-end gap-4 lg:gap-10">
+                {/* Nav Links - Desktop */}
+                <div className="hidden md:flex items-center gap-6 text-sm text-zinc-600">
+                    
+                </div>
+            </div>
         </div>
     </nav>
   )
