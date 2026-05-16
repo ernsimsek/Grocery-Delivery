@@ -24,6 +24,26 @@ const Footer = () => {
                 </div>
                 </div>
                 
+                {/* Dynamic Sections */}
+                {footerData.sections.map((section, i)=>(
+                    <div key={i}>
+                        <h3 className="text-sm font-semibold uppercase mb-4">{section.title}</h3>
+                        <ul className="space-y-2">
+                            {section.links.map((link, i)=>(
+                                <li key={i}>
+                                    {link.to ? (
+                                        <Link to={link.to} className="text-sm text-white/70 hover:text-white">
+                                            {link.label}
+                                        </Link>
+                                    ) : (
+                                        <a href={link.href} className="text-sm text-white/70 hover:text-white">{link.label}</a>
+                                    )}
+                                </li>
+                            ))}
+                        </ul> 
+                    </div>
+                ))}
+
             </div>
 
             {/* Bottom */}
