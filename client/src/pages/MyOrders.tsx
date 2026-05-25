@@ -87,7 +87,13 @@ const MyOrders = () => {
                       <ChevronRightIcon className="size-4 text-app-text-light"/>
                     </div>
                   </div>
+                                                  
                 {/* Item thumbnails */}
+                  <div className="flex items-center gap-2 mb-3">
+                    {order.items.slice(0,4).map((item, i) => (
+                      <img key={i} src={item.image} alt={item.name} className="size-12 sm:size-16 rounded-lg object-cover border border-app-border"/>
+                    ))}
+                  </div>
 
                 {/* total items & price */}
 
