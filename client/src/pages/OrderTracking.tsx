@@ -11,6 +11,7 @@ import OrderTimeLine from "../components/OrderTracking/OrderTimeLine";
 
 const OrderTracking = () => {
 
+  const currency = import.meta.env.VITE_APP_CURRENCY_SYMBOL || '$';
   const {id} = useParams();
   const navigate = useNavigate();
   const [order, setOrder] = useState<Order | null>(null);
@@ -97,15 +98,43 @@ const OrderTracking = () => {
             <div className="space-y-3">
               {order?.items.map((item, i)=>(
                 <div key={i} className="flex items-center gap-3">
-                  <img src={item.image} alt={item.name} className="size-14 rounded-lg object-cover border border-app-border"/>
-                  <div>
-                    <p className="text-sm font-medium text-app-green">{item.name}</p>
-                    {/* <p className="text-xs text-app-text-light">{currency}{item.price.toFixed(2)}</p> */}
+                  <img src={item.image} alt={item.name} className="size-10 rounded-lg object-cover"/>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-app-green truncate">{item.name}</p>
+                    <p className="text-xs text-app-text-light">x{item.quantity}</p>
                   </div>
+                  <span className="text-sm font-semibold">
+                    {currency}{(item.price * item.quantity).toFixed(2)}
+                  </span>
                 </div>
-              ))}  
+              ))}
+            </div>
+
+            <div className="mt-4 pt-3 border-t border-app-border space-y-1.5 text-sm">
+
+              <div className="flex justify-between">
+                <span className="text-app-text-light">Subtotal</span>
+                <span>{currency}{order?.subtotal.toFixed(2)}</span>
+              </div>
+
+              <div className="flex justify-between">
+                <span className="text-app-text-light">Delivery</span>
+                <span>{order?.deliveryFee === 0 ? "Free" : `${currency}${order?.deliveryFee.toFixed(2)}`}</span>
+              </div>
+
+              <div className="flex justify-between">
+                <span className="text-app-text-light">Tax</span>
+                <span>{currency}{order?.tax.toFixed(2)}</span>
+              </div>
+
+              <div className="flex justify-between pt-2 border-t border-app-border font-semibold text-app-green">
+                <span className="text-app-text-light">Total</span>
+                <span>{currency}{order?.total.toFixed(2)}</span>
+              </div>
+
             </div>
           </div>
+
         </div>
 
       </div>
