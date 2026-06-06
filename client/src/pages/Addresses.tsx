@@ -31,7 +31,7 @@ const Addresses = () => {
     setEditingId(null)
   }
 
-  const getLocation = (retries: 3): Promise<{lat: number; lng: number}>=>{
+  const getLocation = (retries: number = 3): Promise<{ lat: number; lng: number }>=>{
     return new Promise((resolve, reject)=>{
       if(!navigator.geolocation){
         reject(new Error("Geolocation not supported"))
@@ -68,7 +68,7 @@ const Addresses = () => {
   const handleSubmit = async (e: React.SubmitEvent) => {
     e.preventDefault()
     try {
-      const coords = await getLocation()
+      const coords = await getLocation();
       const payload = {...form, ...coords}
 
       if(editingId){
