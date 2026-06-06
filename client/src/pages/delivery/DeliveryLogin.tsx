@@ -29,7 +29,7 @@ export default function DeliveryLogin() {
 
     useEffect(()=>{
         if(localStorage.getItem("delivery_token")){
-            navigate('/delivery')
+            navigate('/delivery') 
         }
     },[])
 
