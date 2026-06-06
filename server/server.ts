@@ -15,7 +15,7 @@ import { stripeWebhook } from "./controllers/webhooks.js";
 
 const app = express();
 
-app.post("/api/stripe", express.raw({type: 'application/json'}), stripeWebhook  )
+app.post("/api/stripe", express.raw({type: 'application/json'}), stripeWebhook)
 
 // Middleware
 app.use(cors())
