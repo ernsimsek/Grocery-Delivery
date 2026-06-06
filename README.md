@@ -250,6 +250,10 @@ Both folders include a `vercel.json` for separate Vercel deployments. In product
 
 ---
 
+<img width="1919" height="1079" alt="Grocery-Delivery" src="https://github.com/user-attachments/assets/4cebff6b-b1f8-43b9-a03c-358c58dfe142" />
+
+---
+
 ## License
 
 This project was built for learning and portfolio purposes.
